@@ -17,8 +17,6 @@ const App = () => {
         exercises: 14
       } 
     ]     
-
-
   } 
   
   return (    
@@ -29,6 +27,7 @@ const App = () => {
     </div>
   )
 }
+
 const Header = (props) =>{  
   
   return(
@@ -64,8 +63,4 @@ const Total = (props) =>{
     </div>
   )
 }
-
-
-
-
 export default App
