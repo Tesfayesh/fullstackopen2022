@@ -2,6 +2,14 @@ import { useState } from "react";
 
 const Statistics = (props) => {
   const {good, neutral, bad} = props
+
+  if ( good === 0 && neutral === 0 && bad === 0) {
+        return (
+          <div>
+              <p>No feedback given</p>
+          </div>          
+        )
+        }
   return(
     <div>
       <p>All {good + neutral + bad}</p>
@@ -32,7 +40,7 @@ const App = () =>{
     setBad(bad + 1)
   }
 
-
+  
   return (
     <div>
       <h1>Give feedback</h1>
@@ -46,7 +54,7 @@ const App = () =>{
       <p>Good {good}</p>
       <p>Neutral {neutral}</p>
       <p>Bad {bad}</p>
-
+      <h1>Statistics</h1>
       <Statistics 
         good = {good}
         neutral = {neutral}
