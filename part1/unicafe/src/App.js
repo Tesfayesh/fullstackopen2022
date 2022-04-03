@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const App = () =>{
+
   //saving the button to their own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -18,6 +19,7 @@ const App = () =>{
     setBad(bad + 1)
   }
 
+
   return (
     <div>
       <h1>Give feedback</h1>
@@ -31,6 +33,9 @@ const App = () =>{
       <p>Good {good}</p>
       <p>Neutral {neutral}</p>
       <p>Bad {bad}</p>
+      <p>All {good + neutral + bad}</p>
+      <p>Average {((good * 1) + (neutral * 0) + (bad * -1)) / (good + neutral + bad)}</p>
+      <p>Positive {(good / (good + neutral + bad)) * 100} %</p>
 
     </div>
   )
