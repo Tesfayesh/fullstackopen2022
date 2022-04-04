@@ -8,17 +8,29 @@ const Statistics = (props) => {
           <div>
               <p>No feedback given</p>
           </div>          
-        )
-        }
-  return(
-    <div>
-      <p>All {good + neutral + bad}</p>
-      <p>Average {((good * 1) + (neutral * 0) + (bad * -1)) / (good + neutral + bad)}</p>
-      <p>Positive {(good / (good + neutral + bad)) * 100} %</p>
-    </div>
+        )} 
+}
 
+ const StatisticsLine = ({text, value}) => {
+    value = String(value)
+  return (    
+    <div> 
+      <table>
+      <tbody>
+        <tr>   
+        <td>{text}</td>  
+        <td>{value}</td>
+        </tr>       
+      </tbody>    
+      </table>    
+    </div>
+  ) 
+  }
+
+const Button = ({handleClick, text}) => {
+  return(
+    <button onClick={handleClick}>{text}</button>
   )
- 
 }
 
 const App = () =>{
@@ -39,28 +51,28 @@ const App = () =>{
   const handleBad = () => {
     setBad(bad + 1)
   }
-
-  
+ 
   return (
     <div>
       <h1>Give feedback</h1>
-
-      <button onClick={handleGood}>good</button>
-      <button onClick={handleNeutral}>neutral</button>
-      <button onClick={handleBad}>bad</button>
-
+      <Button handleClick={handleGood}  text='good'/>
+      <Button handleClick={handleNeutral}  text='neutral'/>
+      <Button handleClick={handleBad}  text='bad'/>
+      
       <h1>Statistics</h1>
-
-      <p>Good {good}</p>
-      <p>Neutral {neutral}</p>
-      <p>Bad {bad}</p>
-      <h1>Statistics</h1>
+          
+      <StatisticsLine text = 'good' value = {good} />
+      <StatisticsLine text = 'neutral' value = {neutral} />
+      <StatisticsLine text = 'bad' value = {bad} />
+      <StatisticsLine text = 'All' value = {good + neutral + bad} />
+      <StatisticsLine text = 'Average' value = {((good * 1) + (neutral * 0) + (bad * -1)) / (good + neutral + bad)} />
+      <StatisticsLine text = 'Positive' value = {((good / (good + neutral + bad)) * 100 ) + ' %' } />
+      
       <Statistics 
         good = {good}
         neutral = {neutral}
         bad = {bad}
       />
-      
     </div>
   )
 }
