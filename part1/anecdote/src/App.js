@@ -10,25 +10,39 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ]
-   
-  
-  const [selected, setSelected] = useState(0)
-   
-  const handleClick = () => {
-    
-   const randomNumber = Math.floor((Math.random() * 7))
 
+  const initialVotes = Array(anecdotes.length).fill(0)
+
+  const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(initialVotes)
+  const [highVote, setHighVote] = useState(0)
+
+  console.log(initialVotes)
+  const handleClick = () => {    
+    const randomNumber = Math.floor((Math.random() * 7))
     setSelected(randomNumber)
   }
 
-      
-  
+  const handleVote = (item) =>{
+    const newVotes = [...votes]
+    newVotes[item] += 1
+    setVotes(newVotes)
+    setHighVote(newVotes.indexOf(Math.max.apply(Math, newVotes)))
+  }
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
+      <p>has {votes[selected]} votes</p>
       <div>
+        <button onClick={() => handleVote(selected)}>vote</button>
         <button onClick={handleClick}>next anecdote</button>
       </div>
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[highVote]}</p>
+      <p>has {votes[highVote]} votes</p>
+
     </div>
   )
 }
