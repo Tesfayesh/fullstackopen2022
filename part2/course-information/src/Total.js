@@ -3,7 +3,7 @@ import React from 'react'
 const Total = ({course}) => {
     const { parts } = course
      
-    let total = parts.reduce((previousExercise, currentExercise) => {
+    const total = parts.reduce((previousExercise, currentExercise) => {
            return previousExercise + currentExercise.exercises    
     }, 0)
 
