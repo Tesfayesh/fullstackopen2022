@@ -1,19 +1,15 @@
 import React from 'react'
-import Parts from './Parts'
-
-
+import Part from './Part'
 
 const Content = ({course}) => {
-    const { parts } = course;
-
-    return (        
-        parts.map((part) =>
-          <div key={part.id}>     
-            <Parts  part = {part} />
-          </div>)          
-    )
-          
-  }
+ 
+  return (
+    <div key={course.id}>
+      {course.parts.map((part) =>
+       <Part key= {part.id} name = {part.name}  exercise = {part.exercises}/>
+      )}
+    </div>
+  )
+}
 
 export default Content
-
