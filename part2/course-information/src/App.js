@@ -1,7 +1,6 @@
-import Course from "./Course"
-import Total from "./Total"
-import Title from "./Title"
-import Header from "./Header"
+import Course from "./components/Course"
+import Title from "./components/Title"
+
 
 const App = () => {
 
